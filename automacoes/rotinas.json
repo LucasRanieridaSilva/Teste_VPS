@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "routines": [
+    {
+      "name": "install_programs_from_list",
+      "description": "Instalar ou reinstalar os programas e pacotes da lista salva. Install the programs and packages from the saved list.",
+      "script": "automacoes/rotinas/instalar-programas.sh",
+      "phase": "before_desktop",
+      "timeout_seconds": 900,
+      "triggers": [
+        "\\b(?:instale|instala|instalar|reinstale|reinstalar|install|reinstall)\\b[\\s\\S]*\\b(?:lista|list)\\b"
+      ]
+    },
+    {
+      "name": "prepare_work_folders",
+      "description": "Preparar ou criar minhas pastas e diretorios de trabalho. Prepare or create my work folders and directories.",
+      "script": "automacoes/rotinas/preparar-pastas.sh",
+      "phase": "before_desktop",
+      "timeout_seconds": 60,
+      "triggers": [
+        "\\b(?:prepare|preparar|crie|criar|create)\\b[\\s\\S]*\\b(?:pastas|diretorios|folders|directories)\\b"
+      ]
+    },
+    {
+      "name": "open_programs_from_list",
+      "description": "Abrir ou iniciar os programas e aplicativos da lista salva no desktop. Open or launch the saved desktop applications list.",
+      "script": "automacoes/rotinas/abrir-programas.sh",
+      "phase": "after_desktop",
+      "timeout_seconds": 60,
+      "triggers": [
+        "\\b(?:abra|abre|abrir|open|launch)\\b[\\s\\S]*\\b(?:lista|list)\\b"
+      ]
+    },
+    {
+      "name": "backup_changed_files",
+      "description": "Copiar arquivos novos e alterados para TeleDrive com deduplicacao por conteudo. Incremental backup of new and changed files. Requires backup transport credentials, used by the fixed scheduler.",
+      "script": "automacoes/rotinas/backup-incremental.sh",
+      "phase": "before_backup",
+      "timeout_seconds": 1800
+    }
+  ]
+}
